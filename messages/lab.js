@@ -29,5 +29,5 @@ function parse(){
 			changeloc.innerHTML = changeloc.innerHTML + '</div>'
 		}
 	}
-	request.send(null);
+	request.send();
 }
