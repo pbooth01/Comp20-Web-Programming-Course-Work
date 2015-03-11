@@ -1,31 +1,33 @@
-// Your JavaScript goes here...
+function parse(){
 
-var request = new XMLHttpRequest();
+	//Getting the request
+	request = new XMLHttpRequest();
 	request.overrideMimeType("application/json");
-	request.open("GET", "data.json", true);
+	request.open("GET", "http://messagehub.herokuapp.com/messages.json", true);
+	
 
-request.onreadystatechange = function() {
-    if (request.readyState == 4 && request.status == 200) {
-      var myArr = JSON.parse(request.responseText);
-        parse(myArr);  
-    }
-}
+	request.onreadystatechange = print; //on state change call the print function
 
-request.send(null);
+	
+	function print(){	
+    	
+    	if (request.readyState == 4 && request.status == 200) {
+      		
+      		var myArr = JSON.parse(request.responseText); //my array contains data
 
-function parse(arr){
+      		//change loc is making changes to the location with ID messages
+			var changeloc = document.getElementById('messages'); 
 
-	var i = 0;
-
-	var changeloc = document.getElementById("messages");
-
-	changeloc.innerHTML = '<div>';
-
-	for (i = 0; i < arr.length; i++) {
-		changeloc.innerHTML = changeloc.innerHTML + '<p>' + 
-						'<span class = "con">' + arr[i].content + '</span>' + 
+			//How I want the content contained in the HTML
+			changeloc.innerHTML = '<div>';
+			for (id in myArr) {
+				changeloc.innerHTML = changeloc.innerHTML + '<p>' + 
+						'<span class = "con">' + myArr[id].content + '</span>' + 
 						" " +
-						'<span class = "use">' + arr[i].username + '</span>' + '</p>'; 
+						'<span class = "use">' + myArr[id].username + '</span>' + '</p>'; 
+			}
+			changeloc.innerHTML = changeloc.innerHTML + '</div>'
+		}
 	}
-	changeloc.innerHTML = changeloc.innerHTML + '</div>'
+	request.send(null);
 }
