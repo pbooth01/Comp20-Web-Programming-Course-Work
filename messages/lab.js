@@ -3,7 +3,7 @@ function parse(){
 	//Getting the request
 	request = new XMLHttpRequest();
 	request.overrideMimeType("application/json");
-	request.open("GET", "http://messagehub.herokuapp.com/messages.json", true);
+	request.open("GET", "data.json", true);
 	
 
 	request.onreadystatechange = print; //on state change call the print function
