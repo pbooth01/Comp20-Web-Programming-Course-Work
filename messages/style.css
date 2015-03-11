@@ -1,1 +1,12 @@
-/* Your CSS here... */
+p{
+	background-color: #33FF00;
+	width: 330px;
+}
+span.con {
+	font-size: 18px;
+}
+
+span.use{
+	font-size: 12px;
+}
+

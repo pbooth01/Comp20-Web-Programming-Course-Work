@@ -19,7 +19,7 @@ function parse(arr){
 
 	var changeloc = document.getElementById("messages");
 
-	changeloc.innerHTML = '<p>';
+	changeloc.innerHTML = '<div>';
 
 	for (i = 0; i < arr.length; i++) {
 		changeloc.innerHTML = changeloc.innerHTML + '<p>' + 
@@ -27,5 +27,5 @@ function parse(arr){
 						" " +
 						'<span class = "use">' + arr[i].username + '</span>' + '</p>'; 
 	}
-	changeloc.innerHTML = changeloc.innerHTML + '</p>'
+	changeloc.innerHTML = changeloc.innerHTML + '</div>'
 }
