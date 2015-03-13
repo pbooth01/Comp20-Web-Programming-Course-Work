@@ -67,7 +67,7 @@ var http = new XMLHttpRequest();
             function haversine(lat, lng){
                 console.log(lat);
                 console.log(lng);
-                var R = 6371000 // km
+                var R = 6371000; // km
                 var myLatRad = toRad(myLat);
                 var myLngRad = toRad(myLng);
                 var lat1 = toRad(lat);
@@ -82,7 +82,7 @@ var http = new XMLHttpRequest();
                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
                 console.log(R * c);
-                return R * c / 1609.34
+                return (R * c / 1609.34);
             }
 
             function setinfowindow(distance, marker){
