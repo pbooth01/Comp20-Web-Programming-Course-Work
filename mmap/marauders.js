@@ -56,7 +56,7 @@ var http = new XMLHttpRequest();
                     var marker = new google.maps.Marker({
                         position: myLatlng,
                         map: map,
-                        title: info[id].login;
+                        title: info[id].login
                         });
                     marker.setMap(map);
                 }
