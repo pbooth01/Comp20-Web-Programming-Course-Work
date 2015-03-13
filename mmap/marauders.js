@@ -35,14 +35,14 @@ var http = new XMLHttpRequest();
                 console.log("Call before getMyLocation()");
                 getMyLocation();
                 checkresponse();
-                locations();
                 console.log("Call after getMyLocation()");
             }
 
             function checkresponse(){
                 http.onreadystatechange = function() {//Call a function when the state changes
                     if(http.readyState == 4 && http.status == 200) {
-                        console.log(http.responseText); 
+                        console.log(http.responseText);
+                        locations(); 
 
                     }
                 }
