@@ -51,17 +51,35 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
-                    setinfowindow(marker);
+                    setinfowindow(info, marker);
                     marker.setMap(map);
                 }
                 //google.maps.event.addDomListener(window, 'load', initialize);
 
             }
-            function setinfowindow(marker){
+
+            function haversine(info, marker){
+                var R = 6371000; // metres
+                var φ1 = myLat.toRadians();
+                var φ2 = myLng.toRadians();
+                var Δφ = (info[id].lat-myLat).toRadians();
+                var Δλ = (info[id].lng-MyLng).toRadians();
+
+                var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                Math.cos(φ1) * Math.cos(φ2) *
+                Math.sin(Δλ/2) * Math.sin(Δλ/2);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+                var d = R * c;
+                return d;
+            }
+
+            function setinfowindow(info, marker){
                 var contentString = marker.title;
+                var distance = haversine(marker);
 
                 var infowindow = new google.maps.InfoWindow({
-                content: contentString
+                content: contentString + "<p>" + distance + "</p>"
                 });
 
                 google.maps.event.addListener(marker, 'click', function() {
