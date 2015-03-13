@@ -104,4 +104,3 @@ var http = new XMLHttpRequest();
                 // Create a marker
                 
             }
-      }
