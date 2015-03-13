@@ -66,7 +66,7 @@ var http = new XMLHttpRequest();
             function haversine(lat, lng){
                 console.log(lat);
                 console.log(lng);
-                var R = 6371000; // km
+                var R = 6371; // km
                 var myLatRad = toRad(myLat);
                 var myLngRad = toRad(myLng);
                 var lat = toRad(lat);
@@ -89,7 +89,7 @@ var http = new XMLHttpRequest();
                 var distance = haversine(lat, lng);
 
                 var infowindow = new google.maps.InfoWindow({
-                content: contentString + "<p> distance from ErinHolleman =: " + distance + "miles</p>"
+                content: contentString + "<p> distance from ErinHolleman = " + distance + "miles</p>"
                 });
 
                 google.maps.event.addListener(marker, 'click', function() {
