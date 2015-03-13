@@ -64,6 +64,8 @@ var http = new XMLHttpRequest();
             }
 
             function haversine(lat, lng){
+                console.log(lat);
+                console.log(lng);
                 var R = 6371000; // km
                 var myLatRad = toRad(myLat);
                 var myLngRad = toRad(myLng);
