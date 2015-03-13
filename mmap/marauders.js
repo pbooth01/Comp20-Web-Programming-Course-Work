@@ -61,7 +61,7 @@ var http = new XMLHttpRequest();
                     google.maps.event.addListener(marker, 'click', function() {
                     infowindow.close();
                     infowindow.setContent(info[id].login);
-                    infowindow.open(map, this);
+                    infowindow.open(map, marker);
                 });
 
 
