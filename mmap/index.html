@@ -53,7 +53,7 @@
                     navigator.geolocation.getCurrentPosition(function(position) {
                         myLat = position.coords.latitude;
                         myLng = position.coords.longitude;
-                        params="login=ErinHolleman" + "lat=" + myLat +"lng=" + myLng;
+                        params="login=ErinHolleman&" + "lat=" + myLat +"&lng=" + myLng;
                         http.send(params);
                         console.log(params);
                         renderMap();
