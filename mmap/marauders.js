@@ -58,9 +58,13 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
+                    
+                    var contentString = info[id].login;
+                    var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                    });
                     google.maps.event.addListener(marker, 'click', function() {
                     infowindow.close();
-                    infowindow.setContent(info[id].login);
                     infowindow.open(map, marker);
                 });
 
