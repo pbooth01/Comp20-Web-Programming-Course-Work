@@ -51,7 +51,6 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
-                    console.log(info[id].lat);
                     setinfowindow(info[id].lat, info[id].lng, marker);
                     marker.setMap(map);
                 }
@@ -87,7 +86,7 @@ var http = new XMLHttpRequest();
 
             function setinfowindow(lat, lng, marker){
                 var contentString = marker.title;
-                var distance = haversine(marker);
+                var distance = haversine(lat, lng);
 
                 var infowindow = new google.maps.InfoWindow({
                 content: contentString + "<p> distance from origin: " + distance + "</p>"
