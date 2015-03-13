@@ -51,7 +51,8 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
-                    setinfowindow(info[id].lat, info[id].lng, marker);
+                    var distance = haversine(info[id]lat, info[id]lng);
+                    setinfowindow(distance, marker);
                     marker.setMap(map);
                 }
                 //google.maps.event.addDomListener(window, 'load', initialize);
@@ -66,7 +67,7 @@ var http = new XMLHttpRequest();
             function haversine(lat, lng){
                 console.log(lat);
                 console.log(lng);
-                var R = 6371; // km
+                var R = 6371000; // km
                 var myLatRad = toRad(myLat);
                 var myLngRad = toRad(myLng);
                 var lat = toRad(lat);
@@ -84,9 +85,9 @@ var http = new XMLHttpRequest();
                 return R * c / 1609.34; //converts to miles
             }
 
-            function setinfowindow(lat, lng, marker){
+            function setinfowindow(distance, marker){
                 var contentString = marker.title;
-                var distance = haversine(lat, lng);
+                //var distance = haversine(lat, lng);
 
                 var infowindow = new google.maps.InfoWindow({
                 content: contentString + "<p> distance from ErinHolleman = " + distance + "miles</p>"
