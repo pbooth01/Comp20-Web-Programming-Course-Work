@@ -77,12 +77,12 @@ var http = new XMLHttpRequest();
                 dLng = lng1 - myLatRad;
 
                 var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(myLatRad) * Math.cos(myLngRad) *
+                Math.cos(myLatRad) * Math.cos(lat1) *
                 Math.sin(dLng/2) * Math.sin(dLng/2);
                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
                 console.log(R * c);
-                return R * c 
+                return R * c / 1609.34
             }
 
             function setinfowindow(distance, marker){
