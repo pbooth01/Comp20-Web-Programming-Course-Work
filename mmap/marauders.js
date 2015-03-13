@@ -58,18 +58,17 @@ var http = new XMLHttpRequest();
 
             }
 
-            function haversine(info, marker){
+            function toRad(Value) {
                 /** Converts numeric degrees to radians */
-                  if (typeof(Number.prototype.toRad) === "undefined") {
-                    Number.prototype.toRad = function() {
-                    return this * Math.PI / 180;
-                    }
-                }
+                return Value * Math.PI / 180;
+            }
+
+            function haversine(info, marker){
                 var R = 6371000; // metres
-                var φ1 = myLat.toRadians();
-                var φ2 = myLng.toRadians();
-                var Δφ = (info[id].lat-myLat).toRadians();
-                var Δλ = (info[id].lng-MyLng).toRadians();
+                var φ1 = toRad(myLat);
+                var φ2 = toRadians(myLng);
+                var Δφ = toRad(info[id].lat-myLat);
+                var Δλ = toRad(info[id].lng-MyLng);
 
                 var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
                 Math.cos(φ1) * Math.cos(φ2) *
@@ -85,7 +84,7 @@ var http = new XMLHttpRequest();
                 var distance = haversine(marker);
 
                 var infowindow = new google.maps.InfoWindow({
-                content: contentString + "<p>" + distance + "</p>"
+                content: contentString + "<p> distance from origin: " + distance + "</p>"
                 });
 
                 google.maps.event.addListener(marker, 'click', function() {
