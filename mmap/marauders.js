@@ -87,10 +87,11 @@ var http = new XMLHttpRequest();
 
             function setinfowindow(distance, marker){
                 var contentString = marker.title;
+                var distance1 = distance;
                 //var distance = haversine(lat, lng);
 
                 var infowindow = new google.maps.InfoWindow({
-                content: contentString + "<p> distance from ErinHolleman = " + distance + "miles</p>"
+                content: contentString + "<p> distance from ErinHolleman = " + distance1 + "miles</p>"
                 });
 
                 google.maps.event.addListener(marker, 'click', function() {
