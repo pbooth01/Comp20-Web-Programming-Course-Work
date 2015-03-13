@@ -81,7 +81,7 @@ var http = new XMLHttpRequest();
                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
                 console.log(R * c);
-                return R * c / 1609.34;
+                return R * c / 1609.34; //converts to miles
             }
 
             function setinfowindow(lat, lng, marker){
@@ -89,7 +89,7 @@ var http = new XMLHttpRequest();
                 var distance = haversine(lat, lng);
 
                 var infowindow = new google.maps.InfoWindow({
-                content: contentString + "<p> distance from origin: " + distance + "</p>"
+                content: contentString + "<p> distance from ErinHolleman =: " + distance + "miles</p>"
                 });
 
                 google.maps.event.addListener(marker, 'click', function() {
