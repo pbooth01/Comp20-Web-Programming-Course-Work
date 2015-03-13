@@ -92,6 +92,7 @@ var http = new XMLHttpRequest();
     
                 // Create a marker
                 google.maps.event.addListener(markers, 'click', function() {
+                infowindow.close();
                 infowindow.setContent(this.title);
                 infowindow.open(map, this);
                 });
