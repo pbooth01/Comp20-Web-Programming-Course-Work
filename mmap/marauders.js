@@ -77,6 +77,7 @@ var http = new XMLHttpRequest();
 
                 var d = R * c;
                 return d;
+                console.log(d);
             }
 
             function setinfowindow(info, marker){
