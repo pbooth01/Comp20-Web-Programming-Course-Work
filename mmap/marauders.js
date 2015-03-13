@@ -94,6 +94,6 @@ var http = new XMLHttpRequest();
                 google.maps.event.addListener(markers, 'click', function() {
                 infowindow.setContent(this.title);
                 infowindow.open(map, this);
-                }
+                });
                 
             }
