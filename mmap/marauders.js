@@ -66,7 +66,7 @@ var http = new XMLHttpRequest();
             function haversine(info, marker){
                 var R = 6371000; // metres
                 var φ1 = toRad(myLat);
-                var φ2 = toRadians(myLng);
+                var φ2 = toRad(myLng);
                 var Δφ = toRad(info[id].lat-myLat);
                 var Δλ = toRad(info[id].lng-MyLng);
 
