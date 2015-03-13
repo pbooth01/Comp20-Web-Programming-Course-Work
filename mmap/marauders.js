@@ -59,6 +59,12 @@ var http = new XMLHttpRequest();
             }
 
             function haversine(info, marker){
+                /** Converts numeric degrees to radians */
+                  if (typeof(Number.prototype.toRad) === "undefined") {
+                    Number.prototype.toRad = function() {
+                    return this * Math.PI / 180;
+                    }
+                }
                 var R = 6371000; // metres
                 var φ1 = myLat.toRadians();
                 var φ2 = myLng.toRadians();
