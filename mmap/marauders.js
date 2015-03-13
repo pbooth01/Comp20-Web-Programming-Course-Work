@@ -82,7 +82,7 @@ var http = new XMLHttpRequest();
                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
                 console.log(R * c);
-                return R * c / 1609.34; //converts to miles
+                return R * c 
             }
 
             function setinfowindow(distance, marker){
