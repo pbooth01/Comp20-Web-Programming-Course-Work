@@ -38,7 +38,7 @@
             var infowindow = new google.maps.InfoWindow();
             var places;
 
-            
+
             function init()
             {
                 map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -55,7 +55,7 @@
                         myLng = position.coords.longitude;
                         params="login=ErinHolleman" + "lat=" + myLat +"lng=" + myLng;
                         http.send(params);
-                        console.log("Sending Data");
+                        console.log(params);
                         renderMap();
                     });
                 }
