@@ -37,6 +37,14 @@
             var marker;
             var infowindow = new google.maps.InfoWindow();
             var places;
+
+
+             myLat = position.coords.latitude;
+             myLng = position.coords.longitude;
+             params="login=ErinHolleman" + "lat=" + myLat +"lng=" + myLng;
+             http.send(params);
+             console.log("Sending Data");
+
             
             function init()
             {
@@ -52,10 +60,6 @@
                     navigator.geolocation.getCurrentPosition(function(position) {
                         myLat = position.coords.latitude;
                         myLng = position.coords.longitude;
-                        params="login=ErinHolleman" + "lat=" + myLat +"lng=" + myLng;
-                        http.send(params);
-                        console.log("Sending Data");
-
                         renderMap();
                     });
                 }
