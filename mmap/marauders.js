@@ -51,6 +51,7 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
+                    console.log(info[id].lat);
                     setinfowindow(info[id].lat, info[id].lng, marker);
                     marker.setMap(map);
                 }
