@@ -58,19 +58,21 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
-                    
-                    var contentString = info[id].login;
-                    var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                    });
+
+                    //var contentString = info[id].login;
+                    //var infowindow = new google.maps.InfoWindow({
+                    //content: contentString
+                    //});
                     google.maps.event.addListener(marker, 'click', function() {
                     infowindow.close();
+                    infowindow.setContent(info[id].login);
                     infowindow.open(map, marker);
                 });
 
 
                     marker.setMap(map);
                 }
+                google.maps.event.addDomListener(window, 'load', initialize);
 
             }
 
@@ -100,52 +102,6 @@ var http = new XMLHttpRequest();
                 map.panTo(me);
     
                 // Create a marker
-                marker = new google.maps.Marker({
-                    position: me,
-                    title: "Here I Am!"
-                });
-                marker.setMap(map);
-                    
-                // Open info window on click of marker
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.setContent(marker.title);
-                    infowindow.open(map, marker);
-                });
-                /*
-                // Calling Google Places API
-                var request = {
-                    location: me,
-                    radius: '500',
-                    types: ['food']
-                };
-                service = new google.maps.places.PlacesService(map);
-                service.search(request, callback);
-                */
+                
             }
-            
-            // Taken from http://code.google.com/apis/maps/documentation/javascript/places.html
-            /*function callback(results, status)
-            {
-                if (status == google.maps.places.PlacesServiceStatus.OK) {
-                    alert("Got places back!");
-                    places = results;
-                    for (var i = 0; i < results.length; i++) {
-                        createMarker(results[i]);
-                    }
-                }
-            }*/
-            
-            function createMarker(place)
-            {
-                var placeLoc = place.geometry.location;
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: place.geometry.location
-                });
-
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.close();
-                    infowindow.setContent(place.name);
-                    infowindow.open(map, this);
-                });
       }
