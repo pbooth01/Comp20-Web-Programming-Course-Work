@@ -67,8 +67,8 @@ var http = new XMLHttpRequest();
                 var R = 6371000; // metres
                 var φ1 = toRad(myLat);
                 var φ2 = toRad(myLng);
-                var Δφ = toRad(info[id].lat-myLat);
-                var Δλ = toRad(info[id].lng-MyLng);
+                var Δφ = toRad(info.lat - myLat);
+                var Δλ = toRad(info.lng - MyLng);
 
                 var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
                 Math.cos(φ1) * Math.cos(φ2) *
