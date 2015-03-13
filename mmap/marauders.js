@@ -67,14 +67,14 @@ var http = new XMLHttpRequest();
             function haversine(lat, lng){
                 console.log(lat);
                 console.log(lng);
-                var R = 6371000; // km
+                var R = 6371000 // km
                 var myLatRad = toRad(myLat);
                 var myLngRad = toRad(myLng);
-                var lat = toRad(lat);
-                var lng = toRad(lng);
+                var lat1 = toRad(lat);
+                var lng1 = toRad(lng);
 
-                dLat = lat - myLatRad;
-                dLng = lng - myLatRad;
+                dLat = lat1 - myLatRad;
+                dLng = lng1 - myLatRad;
 
                 var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
                 Math.cos(myLatRad) * Math.cos(myLngRad) *
