@@ -60,6 +60,12 @@ var http = new XMLHttpRequest();
                         });
 
                     marker.setMap(map);
+                    
+                    google.maps.event.addListener(markers, 'click', function() {
+                    infowindow.close();
+                    infowindow.setContent(this.title);
+                    infowindow.open(map, this);
+                    });
                 }
                 //google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -92,8 +98,4 @@ var http = new XMLHttpRequest();
     
                 // Create a marker
             }
-            google.maps.event.addListener(markers, 'click', function() {
-                infowindow.close();
-                infowindow.setContent(this.title);
-                infowindow.open(map, this);
-                });
+            
