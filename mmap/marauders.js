@@ -59,17 +59,6 @@ var http = new XMLHttpRequest();
                         title: info[id].login
                         });
 
-                    //var contentString = info[id].login;
-                    //var infowindow = new google.maps.InfoWindow({
-                    //content: contentString
-                    //});
-                    google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.close();
-                    infowindow.setContent(info[id].login);
-                    infowindow.open(map, marker);
-                });
-
-
                     marker.setMap(map);
                 }
                 //google.maps.event.addDomListener(window, 'load', initialize);
@@ -102,5 +91,9 @@ var http = new XMLHttpRequest();
                 map.panTo(me);
     
                 // Create a marker
+                google.maps.event.addListener(markers, 'click', function() {
+                infowindow.setContent(this.title);
+                infowindow.open(map, this);
+                }
                 
             }
