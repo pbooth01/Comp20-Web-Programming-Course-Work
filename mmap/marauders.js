@@ -51,7 +51,7 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
-                    var distance = haversine(info[id]lat, info[id]lng);
+                    var distance = haversine(info[id].lat, info[id].lng);
                     setinfowindow(distance, marker);
                     marker.setMap(map);
                 }
