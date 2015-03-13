@@ -58,10 +58,22 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
-
+                    setinfowindow(marker);
                     marker.setMap(map);
                 }
                 //google.maps.event.addDomListener(window, 'load', initialize);
+
+            }
+            function setinfowindow(marker){
+                var contentString = marker.title;
+
+                var infowindow = new google.maps.InfoWindow({
+                content: contentString
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker);
+                });
 
             }
 
