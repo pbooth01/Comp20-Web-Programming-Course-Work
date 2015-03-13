@@ -51,7 +51,7 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
-                    setinfowindow(info, marker);
+                    setinfowindow(info[id].lat, info[id].lng, marker);
                     marker.setMap(map);
                 }
                 //google.maps.event.addDomListener(window, 'load', initialize);
@@ -63,12 +63,12 @@ var http = new XMLHttpRequest();
                 return Value * Math.PI / 180;
             }
 
-            function haversine(info, marker){
-                var R = 6371; // km
+            function haversine(lat, lng){
+                var R = 6371000; // km
                 var φ1 = toRad(myLat);
                 var φ2 = toRad(myLng);
-                var Δφ = toRad(info.lat - myLat);
-                var Δλ = toRad(info.lng - myLng);
+                var Δφ = toRad(lat - myLat);
+                var Δλ = toRad(lng - myLng);
 
                 var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
                 Math.cos(φ1) * Math.cos(φ2) *
@@ -77,10 +77,10 @@ var http = new XMLHttpRequest();
 
                 var d = R * c;
                 console.log(d);
-                return d;
+                return (d / 1609.34);
             }
 
-            function setinfowindow(info, marker){
+            function setinfowindow(lat, lng, marker){
                 var contentString = marker.title;
                 var distance = haversine(marker);
 
