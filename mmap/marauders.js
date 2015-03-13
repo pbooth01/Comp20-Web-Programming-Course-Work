@@ -35,17 +35,34 @@ var http = new XMLHttpRequest();
                 console.log("Call before getMyLocation()");
                 getMyLocation();
                 checkresponse();
+                locations();
                 console.log("Call after getMyLocation()");
             }
 
             function checkresponse(){
                 http.onreadystatechange = function() {//Call a function when the state changes
                     if(http.readyState == 4 && http.status == 200) {
-                        console.log(http.responseText);
+                        console.log(http.responseText); 
+
                     }
                 }
             }
             
+            
+            function locations(){
+                var info = JSON.parse(http.responseText);
+                for (id in info) {
+                    var myLatlng = new google.maps.LatLng(info[id].lat,info[id].lng);
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        title: info[id].login;
+                        });
+                    marker.setMap(map);
+                }
+
+            }
+
             function getMyLocation() {
                 console.log("In getMyLocation()");
                 if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
