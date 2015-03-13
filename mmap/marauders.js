@@ -74,7 +74,7 @@ var http = new XMLHttpRequest();
                 var lng1 = toRad(lng);
 
                 dLat = lat1 - myLatRad;
-                dLng = lng1 - myLatRad;
+                dLng = lng1 - myLngRad;
 
                 var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
                 Math.cos(myLatRad) * Math.cos(lat1) *
