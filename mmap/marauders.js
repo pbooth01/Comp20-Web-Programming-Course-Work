@@ -58,6 +58,13 @@ var http = new XMLHttpRequest();
                         map: map,
                         title: info[id].login
                         });
+                    google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.close();
+                    infowindow.setContent(info[id].login);
+                    infowindow.open(map, this);
+                });
+
+
                     marker.setMap(map);
                 }
 
