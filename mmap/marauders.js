@@ -6,13 +6,6 @@ var http = new XMLHttpRequest();
         //Send the proper header information along with the request
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-
-        //http.onreadystatechange = function() {//Call a function when the state changes.
-          //  if(http.readyState == 4 && http.status == 200) {
-            //    alert(http.responseText);
-            //}
-        //}
-
             var myLat = 0;
             var myLng = 0;
             var params ="";
@@ -52,9 +45,9 @@ var http = new XMLHttpRequest();
             function locations(){
                 var info = JSON.parse(http.responseText);
                 for (id in info) {
-                    var myLatlng = new google.maps.LatLng(info[id].lat,info[id].lng);
+                    var location = new google.maps.LatLng(info[id].lat,info[id].lng);
                     var marker = new google.maps.Marker({
-                        position: myLatlng,
+                        position: location,
                         map: map,
                         title: info[id].login
                         });
@@ -85,7 +78,7 @@ var http = new XMLHttpRequest();
                         myLng = position.coords.longitude;
                         params="login=ErinHolleman&" + "lat=" + myLat +"&lng=" + myLng;
                         http.send(params);
-                        console.log(params);
+                        console.log(params); //Check to make sure my request is the right format
                         renderMap();
                     });
                 }
@@ -101,7 +94,5 @@ var http = new XMLHttpRequest();
                 
                 // Update map and go there...
                 map.panTo(me);
-    
-                // Create a marker
             }
             
