@@ -65,19 +65,21 @@ var http = new XMLHttpRequest();
 
             function haversine(lat, lng){
                 var R = 6371000; // km
-                var φ1 = toRad(myLat);
-                var φ2 = toRad(myLng);
-                var Δφ = toRad(lat - myLat);
-                var Δλ = toRad(lng - myLng);
+                var myLatRad = toRad(myLat);
+                var myLngRad = toRad(myLng);
+                var lat = toRad(lat);
+                var lng = toRad(lng);
 
-                var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-                Math.cos(φ1) * Math.cos(φ2) *
-                Math.sin(Δλ/2) * Math.sin(Δλ/2);
+                dLat = lat - myLatRad;
+                dLng = lng - myLatRad;
+
+                var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(myLatRad) * Math.cos(myLngRad) *
+                Math.sin(dLng/2) * Math.sin(dLng/2);
                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-                var d = R * c;
                 console.log(d);
-                return (d / 1609.34);
+                return R * c / 1609.34;
             }
 
             function setinfowindow(lat, lng, marker){
