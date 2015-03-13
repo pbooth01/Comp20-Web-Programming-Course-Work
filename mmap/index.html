@@ -25,8 +25,8 @@
 
             var myLat = 0;
             var myLng = 0;
-            var params ="";
-            var request = new XMLHttpRequest();
+            //var params ="";
+            //var request = new XMLHttpRequest();
             var me = new google.maps.LatLng(myLat, myLng);
             var myOptions = {
                         zoom: 13, // The larger the zoom number, the bigger the zoom
@@ -53,9 +53,9 @@
                     navigator.geolocation.getCurrentPosition(function(position) {
                         myLat = position.coords.latitude;
                         myLng = position.coords.longitude;
-                        params="login=ErinHolleman&" + "lat=" + myLat +"&lng=" + myLng;
-                        http.send(params);
-                        console.log(params);
+                        //params="login=ErinHolleman&" + "lat=" + myLat +"&lng=" + myLng;
+                        //http.send(params);
+                        //console.log(params);
                         renderMap();
                     });
                 }
