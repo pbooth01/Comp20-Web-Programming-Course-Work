@@ -124,17 +124,6 @@ var http = new XMLHttpRequest();
                 
                 // Update map and go there...
                 map.panTo(me);
-                var image = 'Nightcrawler.jpg';
-                var location = new google.maps.LatLng(myLat,myLng);
-                var marker = new google.maps.Marker({
-                            position: location,
-                            map: map,
-                            title: "ErinHolleman",
-                            icon: image
-                            });
-                        var distance = haversine(myLat, myLng);
-                        setinfowindow(distance, marker);
-                        marker.setMap(map);
                 
             }
             
