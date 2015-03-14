@@ -62,7 +62,7 @@ var http = new XMLHttpRequest();
                 /** Converts numeric degrees to radians */
                 return Value * Math.PI / 180;
             }
-
+            //taken from stack overflow
             function haversine(lat, lng){
                 console.log(lat);
                 console.log(lng);
@@ -131,7 +131,7 @@ var http = new XMLHttpRequest();
                 marker.setMap(map);
 
                 var infowindow = new google.maps.InfoWindow({
-                content: marker.title + "<p> <img src=" + "Nightcrawler.jpg>" + "</p>"
+                content: marker.title + "<p><img src=" + ""Nightcrawler.jpg"" + "></p>"
                 });
                     
                 // Open info window on click of marker
