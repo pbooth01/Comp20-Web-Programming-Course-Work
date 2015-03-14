@@ -127,7 +127,7 @@ var http = new XMLHttpRequest();
                 // Update map and go there...
                 map.panTo(me);
                 var image = 'Nightcrawler.jpg';
-                var location = new google.maps.LatLng(myLat,myLng;
+                var location = new google.maps.LatLng(myLat,myLng);
                 var marker = new google.maps.Marker({
                             position: location,
                             map: map,
