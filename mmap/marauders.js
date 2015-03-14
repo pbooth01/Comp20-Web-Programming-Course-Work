@@ -1,5 +1,5 @@
 var http = new XMLHttpRequest();
-        var url = "https://secret-about-box.herokuapp.com/sendLocation";
+        var url = "https://secret-about-box.herokuapp.com/sendLocation"; //datastore
         
         http.open("POST", url, true);
 
@@ -8,28 +8,27 @@ var http = new XMLHttpRequest();
             var myLat = 0;
             var myLng = 0;
             var params ="";
-            var request = new XMLHttpRequest();
-            var me = new google.maps.LatLng(myLat, myLng);
+            //var request = new XMLHttpRequest();
+            //var me = new google.maps.LatLng(myLat, myLng);
             var myOptions = {
                         zoom: 13, // The larger the zoom number, the bigger the zoom
                         center: me,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
             var map;
-            var marker;
-            var infowindow = new google.maps.InfoWindow();
-            var places;
+            //var marker;
+            //var infowindow = new google.maps.InfoWindow();
+            //var places;
 
 
             function init()
             {
                 map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-                console.log("Call before getMyLocation()");
                 getMyLocation();
                 checkresponse();
-                console.log("Call after getMyLocation()");
             }
 
+            /* checks to make sure response is ok*/
             function checkresponse(){
                 http.onreadystatechange = function() {//Call a function when the state changes
                     if(http.readyState == 4 && http.status == 200) {
@@ -40,7 +39,8 @@ var http = new XMLHttpRequest();
                 }
             }
             
-            
+            /*parses the JSON response and sets every markers location
+            as well as their distance from me*/
             function locations(){
                 var info = JSON.parse(http.responseText);
                 for (id in info) {
@@ -62,7 +62,8 @@ var http = new XMLHttpRequest();
                 /** Converts numeric degrees to radians */
                 return Value * Math.PI / 180;
             }
-            //taken from stack overflow
+            /*Calculates the distance between any marker
+             and my location. taken from stack overflow */
             function haversine(lat, lng){
                 console.log(lat);
                 console.log(lng);
@@ -99,6 +100,7 @@ var http = new XMLHttpRequest();
 
             }
 
+            //uses geolocation to get my latitude and longitude then sends the http request 
             function getMyLocation() {
                 console.log("In getMyLocation()");
                 if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
@@ -114,9 +116,9 @@ var http = new XMLHttpRequest();
                 else {
                     alert("Geolocation is not supported by your web browser.  What a shame!");
                 }
-                console.log("Leaving getMyLocation()");
             }
 
+            //Renders the map and is also used to place my login and image into my marker 
             function renderMap()
             {
                 me = new google.maps.LatLng(myLat, myLng);
@@ -136,7 +138,6 @@ var http = new XMLHttpRequest();
                     
                 // Open info window on click of marker
                 google.maps.event.addListener(marker, 'click', function() {
-                    //infowindow.setContent(html);
                     infowindow.open(map, marker);
                 });
                 
