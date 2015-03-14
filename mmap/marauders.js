@@ -27,7 +27,6 @@ var http = new XMLHttpRequest();
             function checkresponse(){
                 http.onreadystatechange = function() {//Call a function when the state changes
                     if(http.readyState == 4 && http.status == 200) {
-                        console.log(http.responseText);
                         locations(); 
 
                     }
@@ -61,20 +60,18 @@ var http = new XMLHttpRequest();
             /*Calculates the distance between any marker
              and my location. taken from stack overflow */
             function haversine(lat, lng){
-                console.log(lat);
-                console.log(lng);
                 var R = 6371000; // km
                 var myLatRad = toRad(myLat);
                 var myLngRad = toRad(myLng);
                 var lat1 = toRad(lat);
                 var lng1 = toRad(lng);
 
-                dLat = lat1 - myLatRad;
-                dLng = lng1 - myLngRad;
+                difLat = lat1 - myLatRad;
+                difLng = lng1 - myLngRad;
 
-                var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                var a = Math.sin(difLat/2) * Math.sin(difLat/2) +
                 Math.cos(myLatRad) * Math.cos(lat1) *
-                Math.sin(dLng/2) * Math.sin(dLng/2);
+                Math.sin(difLng/2) * Math.sin(difLng/2);
                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
                 console.log(R * c);
