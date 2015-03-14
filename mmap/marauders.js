@@ -27,7 +27,6 @@ var http = new XMLHttpRequest();
                 console.log("Call before getMyLocation()");
                 getMyLocation();
                 checkresponse();
-                renderMap();
                 console.log("Call after getMyLocation()");
             }
 
@@ -55,7 +54,7 @@ var http = new XMLHttpRequest();
                         setinfowindow(distance, marker);
                         marker.setMap(map);   
                 }
-                //google.maps.event.addDomListener(window, 'load', initialize);
+                renderMap();
 
             }
 
@@ -132,7 +131,7 @@ var http = new XMLHttpRequest();
                 marker.setMap(map);
 
                 var infowindow = new google.maps.InfoWindow({
-                content: marker.title + "<p> <img src='html5.gif'</p>"
+                content: marker.title + "<p> <img src='Nightcrawler.jpg'></p>"
                 });
                     
                 // Open info window on click of marker
