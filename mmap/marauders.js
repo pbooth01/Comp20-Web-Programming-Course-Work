@@ -131,7 +131,7 @@ var http = new XMLHttpRequest();
                 var marker = new google.maps.Marker({
                             position: location,
                             map: map,
-                            title: ErinHolleman,
+                            title: "ErinHolleman",
                             icon: image
                             });
                         var distance = haversine(myLat, myLng);
