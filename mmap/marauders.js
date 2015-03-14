@@ -136,7 +136,7 @@ var http = new XMLHttpRequest();
                     
                 // Open info window on click of marker
                 google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.setContent(marker.title);
+                    infowindow.setContent(html);
                     infowindow.open(map, marker);
                 });
                 
