@@ -45,15 +45,17 @@ var http = new XMLHttpRequest();
             function locations(){
                 var info = JSON.parse(http.responseText);
                 for (id in info) {
-                    var location = new google.maps.LatLng(info[id].lat,info[id].lng);
-                    var marker = new google.maps.Marker({
-                        position: location,
-                        map: map,
-                        title: info[id].login
-                        });
-                    var distance = haversine(info[id].lat, info[id].lng);
-                    setinfowindow(distance, marker);
-                    marker.setMap(map);
+                    while(info[id].login != ErinHolleman){
+                        var location = new google.maps.LatLng(info[id].lat,info[id].lng);
+                        var marker = new google.maps.Marker({
+                            position: location,
+                            map: map,
+                            title: info[id].login
+                            });
+                        var distance = haversine(info[id].lat, info[id].lng);
+                        setinfowindow(distance, marker);
+                        marker.setMap(map);
+                    }
                 }
                 //google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -124,6 +126,17 @@ var http = new XMLHttpRequest();
                 
                 // Update map and go there...
                 map.panTo(me);
+                var image = 'Nightcrawler.jpg'
+                var location = new google.maps.LatLng(myLat,myLng;
+                var marker = new google.maps.Marker({
+                            position: location,
+                            map: map,
+                            title: ErinHolleman,
+                            icon: image
+                            });
+                        var distance = haversine(myLat, myLng);
+                        setinfowindow(distance, marker);
+                        marker.setMap(map);
                 
             }
             
