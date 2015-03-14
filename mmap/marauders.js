@@ -8,7 +8,7 @@ var http = new XMLHttpRequest();
             var myLat = 0;
             var myLng = 0;
             var params ="";
-            var request = new XMLHttpRequest();
+            //var request = new XMLHttpRequest();
             var me = new google.maps.LatLng(myLat, myLng);
             var myOptions = {
                         zoom: 13, // The larger the zoom number, the bigger the zoom
