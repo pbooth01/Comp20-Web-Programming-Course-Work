@@ -45,7 +45,7 @@ var http = new XMLHttpRequest();
             function locations(){
                 var info = JSON.parse(http.responseText);
                 for (id in info) {
-                    while(info[id].login != ErinHolleman){
+                    while(info[id].login != "ErinHolleman"){
                         var location = new google.maps.LatLng(info[id].lat,info[id].lng);
                         var marker = new google.maps.Marker({
                             position: location,
