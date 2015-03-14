@@ -45,7 +45,6 @@ var http = new XMLHttpRequest();
             function locations(){
                 var info = JSON.parse(http.responseText);
                 for (id in info) {
-                    while(info[id].login != "ErinHolleman"){
                         var location = new google.maps.LatLng(info[id].lat,info[id].lng);
                         var marker = new google.maps.Marker({
                             position: location,
@@ -54,8 +53,7 @@ var http = new XMLHttpRequest();
                             });
                         var distance = haversine(info[id].lat, info[id].lng);
                         setinfowindow(distance, marker);
-                        marker.setMap(map);
-                    }
+                        marker.setMap(map);   
                 }
                 //google.maps.event.addDomListener(window, 'load', initialize);
 
