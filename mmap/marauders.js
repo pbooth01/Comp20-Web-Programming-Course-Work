@@ -45,6 +45,7 @@ var http = new XMLHttpRequest();
                             map: map,
                             title: info[id].login
                             });
+                        
                         var distance = haversine(info[id].lat, info[id].lng);
                         setinfowindow(distance, marker);
                         marker.setMap(map);   
@@ -80,10 +81,10 @@ var http = new XMLHttpRequest();
                 return (R * c / 1609.34); //converts to miles
             }
 
+            /*Sets content inside info window*/
             function setinfowindow(distance, marker){
                 var contentString = marker.title;
                 var distance1 = distance;
-                //var distance = haversine(lat, lng);
 
                 var infowindow = new google.maps.InfoWindow({
                 content: contentString + "<p> distance from ErinHolleman = " + distance1 + "miles</p>"
@@ -97,7 +98,6 @@ var http = new XMLHttpRequest();
 
             //uses geolocation to get my latitude and longitude then sends the http request 
             function getMyLocation() {
-                console.log("In getMyLocation()");
                 if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
                     navigator.geolocation.getCurrentPosition(function(position) {
                         myLat = position.coords.latitude;
@@ -105,7 +105,6 @@ var http = new XMLHttpRequest();
                         params="login=ErinHolleman&" + "lat=" + myLat +"&lng=" + myLng;
                         http.send(params);
                         console.log(params); //Check to make sure my request is the right format
-                        //renderMap();
                     });
                 }
                 else {
@@ -113,7 +112,7 @@ var http = new XMLHttpRequest();
                 }
             }
 
-            //Renders the map and is also used to place my login and image into my marker 
+            //Renders the map and is also used to place my login and image into my personal marker 
             function renderMap()
             {
                 me = new google.maps.LatLng(myLat, myLng);
