@@ -27,6 +27,7 @@ var http = new XMLHttpRequest();
                 console.log("Call before getMyLocation()");
                 getMyLocation();
                 checkresponse();
+                renderMap();
                 console.log("Call after getMyLocation()");
             }
 
@@ -108,7 +109,7 @@ var http = new XMLHttpRequest();
                         params="login=ErinHolleman&" + "lat=" + myLat +"&lng=" + myLng;
                         http.send(params);
                         console.log(params); //Check to make sure my request is the right format
-                        renderMap();
+                        //renderMap();
                     });
                 }
                 else {
@@ -123,6 +124,23 @@ var http = new XMLHttpRequest();
                 
                 // Update map and go there...
                 map.panTo(me);
+
+                marker = new google.maps.Marker({
+                    position: me,
+                    title: "ErinHolleman"
+                });
+                marker.setMap(map);
+
+                var infowindow = new google.maps.InfoWindow({
+                content: marker.title + "<p> <img src='html5.gif'</p>"
+                });
+                    
+                // Open info window on click of marker
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent(marker.title);
+                    infowindow.open(map, marker);
+                });
+                
                 
             }
             
