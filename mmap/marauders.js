@@ -5,7 +5,6 @@ var http = new XMLHttpRequest();
 
         //Send the proper header information along with the request
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
             var myLat = 0;
             var myLng = 0;
             var params ="";
