@@ -131,7 +131,7 @@ var http = new XMLHttpRequest();
                 marker.setMap(map);
 
                 var infowindow = new google.maps.InfoWindow({
-                content: marker.title + "<p> <img src='Nightcrawler.jpg'></p>"
+                content: marker.title + "<p> <img src=" + "Nightcrawler.jpg>" + "</p>"
                 });
                     
                 // Open info window on click of marker
