@@ -45,6 +45,7 @@ var http = new XMLHttpRequest();
             function locations(){
                 var info = JSON.parse(http.responseText);
                 for (id in info) {
+                    while(id != ErinHolleman){
                     var location = new google.maps.LatLng(info[id].lat,info[id].lng);
                     var marker = new google.maps.Marker({
                         position: location,
@@ -54,6 +55,7 @@ var http = new XMLHttpRequest();
                     var distance = haversine(info[id].lat, info[id].lng);
                     setinfowindow(distance, marker);
                     marker.setMap(map);
+                    }
                 }
                 //google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -120,9 +122,19 @@ var http = new XMLHttpRequest();
 
             function renderMap()
             {
+                image = 'Nightcrawler.jpg'
                 me = new google.maps.LatLng(myLat, myLng);
                 
                 // Update map and go there...
                 map.panTo(me);
+                var marker = new google.maps.Marker({
+                        position: location,
+                        map: map,
+                        title: info[id].login
+                        icon: image
+                        });
+                    var distance = haversine(info[id].lat, info[id].lng);
+                    setinfowindow(distance, marker);
+                    marker.setMap(map);
             }
             
